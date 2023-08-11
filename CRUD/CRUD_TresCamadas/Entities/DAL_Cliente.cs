@@ -31,6 +31,74 @@ namespace CRUD_TresCamadas
             }
         }
 
-        
+        public void GravaCliente(Modelo_Cliente cliente)
+        {
+            try
+            {
+                conexao = new SqlConnection(con_SQLServer);
+                SqlCommand sql = new SqlCommand("INSERT INTO tbCliente VALUES (@Nome_cliente)", conexao);
+
+                sql.Parameters.AddWithValue("@Nome_cliente", cliente.Nome);
+
+                conexao.Open();
+                sql.ExecuteNonQuery();
+            }
+            catch (Exception erro)
+            {
+
+                throw erro;
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
+
+        public void ExcluiCliente(Modelo_Cliente cliente)
+        {
+            try
+            {
+                conexao = new SqlConnection(con_SQLServer);
+                SqlCommand sql = new SqlCommand("DELETE FROM tbCliente WHERE idCliente = @idCliente", conexao);
+
+                sql.Parameters.AddWithValue("@idCliente", cliente.Codigo);
+
+                conexao.Open();
+                sql.ExecuteNonQuery();
+            }
+            catch (Exception erro)
+            {
+
+                throw erro;
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
+
+        public void AtualizaCliente(Modelo_Cliente cliente)
+        {
+            try
+            {
+                conexao = new SqlConnection(con_SQLServer);
+                SqlCommand sql = new SqlCommand("UPDATE tbCliente SET nome = @Nome_cliente WHERE idCliente = @idCliente", conexao);
+
+                sql.Parameters.AddWithValue("@Nome_cliente", cliente.Nome);
+                sql.Parameters.AddWithValue("@idCliente", cliente.Codigo);
+
+                conexao.Open();
+                sql.ExecuteNonQuery();
+            }
+            catch (Exception erro)
+            {
+
+                throw erro;
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
     }
 }

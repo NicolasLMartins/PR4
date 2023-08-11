@@ -90,6 +90,7 @@
             this.tbCodigo.Name = "tbCodigo";
             this.tbCodigo.Size = new System.Drawing.Size(132, 29);
             this.tbCodigo.TabIndex = 4;
+            this.tbCodigo.TextChanged += new System.EventHandler(this.tbCodigo_TextChanged);
             // 
             // tbNome
             // 
@@ -136,6 +137,7 @@
             // 
             // btLeitura
             // 
+            this.btLeitura.Enabled = false;
             this.btLeitura.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.btLeitura.Location = new System.Drawing.Point(263, 183);
             this.btLeitura.Name = "btLeitura";
@@ -155,6 +157,7 @@
             this.btAtualizar.TabIndex = 10;
             this.btAtualizar.Text = "&Atualizar(U)";
             this.btAtualizar.UseVisualStyleBackColor = true;
+            this.btAtualizar.Click += new System.EventHandler(this.btAtualizar_Click);
             // 
             // btExcluir
             // 
@@ -166,6 +169,7 @@
             this.btExcluir.TabIndex = 11;
             this.btExcluir.Text = "&Excluir(D)";
             this.btExcluir.UseVisualStyleBackColor = true;
+            this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
             // 
             // dgvListarDados
             // 
@@ -196,6 +200,7 @@
             this.Name = "frMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CRUD Em Três Camadas";
+            this.Load += new System.EventHandler(this.frMenuPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarDados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -24,5 +24,47 @@ namespace CRUD_TresCamadas
 
             return dt;
         }
+
+        public void GravaClienteDal(Modelo_Cliente cliente)
+        {
+            try
+            {
+                dalCli = new DAL_Cliente();
+                dalCli.GravaCliente(cliente);
+            }
+            catch (Exception erro)
+            {
+
+                throw erro;
+            }
+        }
+
+        public void ExcluiClienteDal(Modelo_Cliente cliente)
+        {
+            try
+            {
+                dalCli = new DAL_Cliente();
+                dalCli.ExcluiCliente(cliente);
+            }
+            catch (Exception erro)
+            {
+
+                throw erro;
+            }
+        }
+
+        public void AtualizaClienteDal(Modelo_Cliente cliente)
+        {
+            try
+            {
+                dalCli = new DAL_Cliente();
+                dalCli.AtualizaCliente(cliente);
+            }
+            catch (Exception erro)
+            {
+
+                throw erro;
+            }
+        }
     }
 }

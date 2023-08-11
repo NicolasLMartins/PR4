@@ -7,14 +7,14 @@
 
         public int Codigo
         {
-            set { Codigo = value; }
-            get { return Codigo;}
+            set { codigo = value; }
+            get { return codigo;}
         }
 
         public string Nome
         {
-            set { Nome = value; }
-            get { return Nome; }
+            set { nome = value; }
+            get { return nome; }
         }
     }
 }
