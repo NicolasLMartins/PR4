@@ -72,7 +72,7 @@ namespace CRUD_TresCamadas
             try
             {
                 dalCli = new DAL_Cliente();
-                return dalCli.pesquisaCliente(pesquisa);
+                return dalCli.PesquisaCliente(pesquisa);
             }
             catch (Exception erro)
             {

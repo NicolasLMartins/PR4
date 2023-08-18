@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace CRUD_TresCamadas
@@ -53,11 +52,13 @@ namespace CRUD_TresCamadas
 
         private void tbCodigo_TextChanged(object sender, EventArgs e)
         {
-            btExcluir.Enabled = true;
+            tbNome.Enabled = true;
             btAtualizar.Enabled = true;
+            btExcluir.Enabled = true;
 
             if (tbCodigo.Text == "")
             {
+                btAtualizar.Enabled = false;
                 btExcluir.Enabled = false;
             }
         }
@@ -158,6 +159,17 @@ namespace CRUD_TresCamadas
 
                 throw erro;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            btGravar_Click(sender, e);
+            povoaGrade();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            btAtualizar_Click(sender, e);
         }
     }
 }

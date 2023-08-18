@@ -29,6 +29,10 @@ namespace CRUD_TresCamadas
             {
                 throw erro;
             }
+            finally
+            {
+                conexao.Close();
+            }
         }
 
         public void GravaCliente(Modelo_Cliente cliente)
@@ -101,13 +105,13 @@ namespace CRUD_TresCamadas
             }
         }
 
-        public Modelo_Cliente pesquisaCliente(string pesquisa)
+        public Modelo_Cliente PesquisaCliente(string pesquisa)
         {
             try
             {
                 conexao = new SqlConnection(con_SQLServer);
 
-                SqlCommand sql = new SqlCommand("SELECT * FROM tbCliente WHERE nome LIKE @pesquisa", conexao);
+                SqlCommand sql = new SqlCommand($"SELECT * FROM tbCliente WHERE nome LIKE '{pesquisa}%'", conexao);
 
                 sql.Parameters.AddWithValue("@pesquisa", pesquisa);
 
