@@ -66,5 +66,19 @@ namespace CRUD_TresCamadas
                 throw erro;
             }
         }
+
+        public Modelo_Cliente PesquisaClienteDal(string pesquisa)
+        {
+            try
+            {
+                dalCli = new DAL_Cliente();
+                return dalCli.pesquisaCliente(pesquisa);
+            }
+            catch (Exception erro)
+            {
+
+                throw erro;
+            }
+        }
     }
 }

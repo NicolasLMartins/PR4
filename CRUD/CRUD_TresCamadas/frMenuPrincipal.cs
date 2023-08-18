@@ -20,6 +20,26 @@ namespace CRUD_TresCamadas
                 btPesquisar.Enabled = false;
             }
         }
+        private void btPesquisar_Click(object sender, EventArgs e)
+        {
+            string pesquisa = tbPesquisar.Text;
+
+            Modelo_Cliente obj_cliente = new Modelo_Cliente();
+
+            try
+            {
+                BLL_Cliente bllCli = new BLL_Cliente();
+                obj_cliente = bllCli.PesquisaClienteDal(pesquisa);
+
+                tbCodigo.Text = obj_cliente.Codigo.ToString();
+                tbNome.Text = obj_cliente.Nome;
+            }
+            catch (Exception erro)
+            {
+
+                MessageBox.Show($"Erro ao pesquisar o cliente: {erro}");;
+            }
+        }
 
         private void tbNome_TextChanged(object sender, EventArgs e)
         {
@@ -42,14 +62,6 @@ namespace CRUD_TresCamadas
             }
         }
 
-        private void btCadastrar_Click(object sender, EventArgs e)
-        {
-            tbPesquisar.Clear();
-
-            tbNome.Focus();
-            tbNome.Enabled = true;
-        }
-
         public void povoaGrade()
         {
             BLL_Cliente bllCli = new BLL_Cliente();
@@ -61,10 +73,18 @@ namespace CRUD_TresCamadas
             povoaGrade();
         }
 
+        private void btCadastrar_Click(object sender, EventArgs e)
+        {
+            tbPesquisar.Clear();
+
+            tbNome.Enabled = true;
+            tbNome.Focus();
+        }
+
         private void btGravar_Click(object sender, EventArgs e)
         {
             Modelo_Cliente obj_cliente = new Modelo_Cliente();
-            obj_cliente.Nome = tbNome.Text;
+            obj_cliente.Nome = tbNome.Text.Trim();
 
             try
             {

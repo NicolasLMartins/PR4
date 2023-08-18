@@ -100,5 +100,38 @@ namespace CRUD_TresCamadas
                 conexao.Close();
             }
         }
+
+        public Modelo_Cliente pesquisaCliente(string pesquisa)
+        {
+            try
+            {
+                conexao = new SqlConnection(con_SQLServer);
+
+                SqlCommand sql = new SqlCommand("SELECT * FROM tbCliente WHERE nome LIKE @pesquisa", conexao);
+
+                sql.Parameters.AddWithValue("@pesquisa", pesquisa);
+
+                conexao.Open();
+
+                SqlDataReader drPesquisa;
+
+                Modelo_Cliente modCli = new Modelo_Cliente();
+
+                drPesquisa = sql.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (drPesquisa.Read())
+                {
+                    modCli.Codigo = Convert.ToInt16(drPesquisa["idCliente"]);
+                    modCli.Nome = drPesquisa["nome"].ToString();
+                }
+
+                return modCli;
+            }
+            catch (Exception erro)
+            {
+
+                throw erro;
+            }
+        }
     }
 }
