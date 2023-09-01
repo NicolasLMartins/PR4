@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SistemaNLM.Model;
+using SistemaNLM.Tables;
 
 namespace SistemaNLM.Controller
 {
     public class ctlUsuario
     {
+        public static int Inserir(tblUsuario objTabela)
+        {
+            return new modUsuario.Inserir(objTabela);
+        }
     }
 }

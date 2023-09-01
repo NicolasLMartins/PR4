@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-
+using SistemaNLM.Controller;
 using SistemaNLM.Tables;
 
 namespace SistemaNLM.View
@@ -26,7 +26,29 @@ namespace SistemaNLM.View
                     break;
 
                 case "Salvar":
+                    try
+                    {
+                        objTabela.Nome = tbNome.Text;
+                        objTabela.Usuario = tbUsuario.Text;
+                        objTabela.Senha = tbSenha.Text;
 
+                        int x = ctlUsuario.Inserir(objTabela);
+
+                        if (x > 0)
+                        {
+                            // MessageBox.Show("Usuário inserido com sucesso!");
+                            MessageBox.Show(String.Format("Usuário: {0} foi inserido com sucesso!", tbNome.Text));
+                        }
+                        else
+                        {
+                            MessageBox.Show("Usuário não inserido!");
+                        }
+                    }
+                    catch (Exception erro)
+                    {
+                        MessageBox.Show("Ocorreu um erro ao Salvar: " + erro.Message);
+                        throw erro;
+                    }
                     break;
 
                 case "Excluir":
