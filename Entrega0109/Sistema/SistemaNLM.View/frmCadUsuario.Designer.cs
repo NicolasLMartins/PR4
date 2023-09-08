@@ -35,6 +35,10 @@
             this.tbUsuario = new System.Windows.Forms.TextBox();
             this.tbSenha = new System.Windows.Forms.TextBox();
             this.dgvLerDados = new System.Windows.Forms.DataGridView();
+            this.tblUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.senha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btNovo = new System.Windows.Forms.Button();
             this.btSalvar = new System.Windows.Forms.Button();
             this.btExcluir = new System.Windows.Forms.Button();
@@ -78,7 +82,7 @@
             this.tbNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.tbNome.Location = new System.Drawing.Point(111, 12);
             this.tbNome.Name = "tbNome";
-            this.tbNome.Size = new System.Drawing.Size(506, 32);
+            this.tbNome.Size = new System.Drawing.Size(334, 32);
             this.tbNome.TabIndex = 3;
             // 
             // tbUsuario
@@ -87,9 +91,8 @@
             this.tbUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.tbUsuario.Location = new System.Drawing.Point(111, 61);
             this.tbUsuario.Name = "tbUsuario";
-            this.tbUsuario.Size = new System.Drawing.Size(347, 32);
+            this.tbUsuario.Size = new System.Drawing.Size(222, 32);
             this.tbUsuario.TabIndex = 4;
-            this.tbUsuario.TextChanged += new System.EventHandler(this.tbUsuario_TextChanged);
             // 
             // tbSenha
             // 
@@ -97,24 +100,55 @@
             this.tbSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.tbSenha.Location = new System.Drawing.Point(111, 110);
             this.tbSenha.Name = "tbSenha";
-            this.tbSenha.Size = new System.Drawing.Size(347, 32);
+            this.tbSenha.Size = new System.Drawing.Size(222, 32);
             this.tbSenha.TabIndex = 5;
-            this.tbSenha.TextChanged += new System.EventHandler(this.tbSenha_TextChanged);
             // 
             // dgvLerDados
             // 
             this.dgvLerDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLerDados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tblUsuario,
+            this.nome,
+            this.usuario,
+            this.senha});
             this.dgvLerDados.Location = new System.Drawing.Point(12, 209);
             this.dgvLerDados.Name = "dgvLerDados";
-            this.dgvLerDados.Size = new System.Drawing.Size(605, 225);
+            this.dgvLerDados.Size = new System.Drawing.Size(433, 225);
             this.dgvLerDados.TabIndex = 6;
+            // 
+            // tblUsuario
+            // 
+            this.tblUsuario.DataPropertyName = "Id";
+            this.tblUsuario.HeaderText = "Código";
+            this.tblUsuario.Name = "tblUsuario";
+            this.tblUsuario.Width = 50;
+            // 
+            // nome
+            // 
+            this.nome.DataPropertyName = "Nome";
+            this.nome.HeaderText = "Nome";
+            this.nome.Name = "nome";
+            this.nome.Width = 120;
+            // 
+            // usuario
+            // 
+            this.usuario.DataPropertyName = "Usuario";
+            this.usuario.HeaderText = "Usuário";
+            this.usuario.Name = "usuario";
+            this.usuario.Width = 120;
+            // 
+            // senha
+            // 
+            this.senha.DataPropertyName = "Senha";
+            this.senha.HeaderText = "Senha";
+            this.senha.Name = "senha";
             // 
             // btNovo
             // 
             this.btNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.btNovo.Location = new System.Drawing.Point(12, 165);
             this.btNovo.Name = "btNovo";
-            this.btNovo.Size = new System.Drawing.Size(130, 38);
+            this.btNovo.Size = new System.Drawing.Size(88, 38);
             this.btNovo.TabIndex = 7;
             this.btNovo.Text = "&Novo";
             this.btNovo.UseVisualStyleBackColor = true;
@@ -123,9 +157,9 @@
             // btSalvar
             // 
             this.btSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
-            this.btSalvar.Location = new System.Drawing.Point(170, 165);
+            this.btSalvar.Location = new System.Drawing.Point(127, 165);
             this.btSalvar.Name = "btSalvar";
-            this.btSalvar.Size = new System.Drawing.Size(130, 38);
+            this.btSalvar.Size = new System.Drawing.Size(88, 38);
             this.btSalvar.TabIndex = 8;
             this.btSalvar.Text = "&Salvar";
             this.btSalvar.UseVisualStyleBackColor = true;
@@ -134,9 +168,9 @@
             // btExcluir
             // 
             this.btExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
-            this.btExcluir.Location = new System.Drawing.Point(328, 165);
+            this.btExcluir.Location = new System.Drawing.Point(242, 165);
             this.btExcluir.Name = "btExcluir";
-            this.btExcluir.Size = new System.Drawing.Size(130, 38);
+            this.btExcluir.Size = new System.Drawing.Size(88, 38);
             this.btExcluir.TabIndex = 9;
             this.btExcluir.Text = "E&xcluir";
             this.btExcluir.UseVisualStyleBackColor = true;
@@ -145,9 +179,9 @@
             // btEditar
             // 
             this.btEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
-            this.btEditar.Location = new System.Drawing.Point(486, 165);
+            this.btEditar.Location = new System.Drawing.Point(357, 165);
             this.btEditar.Name = "btEditar";
-            this.btEditar.Size = new System.Drawing.Size(130, 38);
+            this.btEditar.Size = new System.Drawing.Size(88, 38);
             this.btEditar.TabIndex = 10;
             this.btEditar.Text = "&Editar";
             this.btEditar.UseVisualStyleBackColor = true;
@@ -157,7 +191,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 446);
+            this.ClientSize = new System.Drawing.Size(457, 446);
             this.Controls.Add(this.btEditar);
             this.Controls.Add(this.btExcluir);
             this.Controls.Add(this.btSalvar);
@@ -171,7 +205,8 @@
             this.Controls.Add(this.label1);
             this.Name = "frmCadUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmCadUsuario";
+            this.Text = "CADASTRO DE USUÁRIO";
+            this.Load += new System.EventHandler(this.frmCadUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLerDados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -191,5 +226,9 @@
         private System.Windows.Forms.Button btSalvar;
         private System.Windows.Forms.Button btExcluir;
         private System.Windows.Forms.Button btEditar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tblUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn senha;
     }
 }

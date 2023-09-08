@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using SistemaNLM.Controller;
 using SistemaNLM.Tables;
@@ -14,15 +15,19 @@ namespace SistemaNLM.View
             InitializeComponent();
         }
 
-        private string opc = "";
+        private void frmCadUsuario_Load(object sender, EventArgs e)
+        {
+            ListaGrid();
+        }
 
+        private string opc = "";
         private void iniciarOpc()
         {
             switch (opc)
             {
                 case "Novo":
-                    HabilitarCampos();
                     LimparCampos();
+                    HabilitarCampos();
                     break;
 
                 case "Salvar":
@@ -61,17 +66,18 @@ namespace SistemaNLM.View
             }
         }
 
-        private void btNovo_Click(object sender, EventArgs e)
-        {
-            opc = "Novo";
-            iniciarOpc();
-        }
-
         private void HabilitarCampos()
         {
             tbNome.Enabled = true;
             tbUsuario.Enabled = true;
             tbSenha.Enabled = true;
+        }
+
+        private void DesabilitarCampos()
+        {
+            tbNome.Enabled = false;
+            tbUsuario.Enabled = false;
+            tbSenha.Enabled = false;
         }
 
         private void LimparCampos()
@@ -83,10 +89,18 @@ namespace SistemaNLM.View
             tbNome.Focus();
         }
 
+        private void btNovo_Click(object sender, EventArgs e)
+        {
+            opc = "Novo";
+            iniciarOpc();
+        }
+
         private void btSalvar_Click(object sender, EventArgs e)
         {
             opc = "Salvar";
             iniciarOpc();
+            LimparCampos();
+            DesabilitarCampos();
         }
 
         private void btExcluir_Click(object sender, EventArgs e)
@@ -101,14 +115,22 @@ namespace SistemaNLM.View
             iniciarOpc();
         }
 
-        private void tbUsuario_TextChanged(object sender, EventArgs e)
+        private void ListaGrid()
         {
+            try
+            {
+                List<tblUsuario> lista = new List<tblUsuario>();
 
-        }
+                lista = new ctlUsuario().Lista();
 
-        private void tbSenha_TextChanged(object sender, EventArgs e)
-        {
+                dgvLerDados.AutoGenerateColumns = false;
+                dgvLerDados.DataSource = lista;
+            }
+            catch (Exception erro)
+            {
 
+                MessageBox.Show("Erro ao lista dados: " + erro.Message);;
+            }
         }
     }
 }
