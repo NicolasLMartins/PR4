@@ -37,7 +37,7 @@ namespace SistemaNLM.View
 
                 objTabela = new ctlUsuario().Login(objTabela);
 
-                if (objTabela.Usuario == null)
+                if (objTabela.Usuario == null || objTabela.Senha == null)
                 {
                     lbMensagem.Text = "Usuário ou senha não encontrados!";
                     lbMensagem.ForeColor = Color.Red;
