@@ -9,6 +9,30 @@ namespace SistemaNLM.Model
 {
     public class modUsuario
     {
+        public int Excluir(tblUsuario objTabela)
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+                con.ConnectionString = Properties.Settings.Default.Banco;
+
+                SqlCommand sql = new SqlCommand();
+
+                sql.CommandType = CommandType.Text;
+
+                con.Open();
+
+                sql.CommandText = "DELETE FROM tblUsuario WHERE id = @Id";
+
+                sql.Parameters.Add("Id", SqlDbType.VarChar).Value = objTabela.Id;
+
+                sql.Connection = con;
+
+                int quantidade = sql.ExecuteNonQuery();
+
+                return quantidade;
+            }
+        }
+
         public int Inserir(tblUsuario objTabela)
         {
             //Sintaxe do "using" precisa de um OBJETO
@@ -48,7 +72,7 @@ namespace SistemaNLM.Model
 
                 con.Open();
 
-                sql.CommandText = "SELECT * FROM tblUsuario ORDER BY idUsuario DESC";
+                sql.CommandText = "SELECT * FROM tblUsuario ORDER BY id DESC";
 
                 sql.Connection = con;
 
@@ -64,7 +88,7 @@ namespace SistemaNLM.Model
                     {
                         tblUsuario dado = new tblUsuario();
 
-                        dado.Id = Convert.ToInt32(dr["idUsuario"]);
+                        dado.Id = Convert.ToInt32(dr["id"]);
                         dado.Nome = Convert.ToString(dr["nome"]);
                         dado.Usuario = Convert.ToString(dr["usuario"]);
                         dado.Senha = Convert.ToString(dr["senha"]);

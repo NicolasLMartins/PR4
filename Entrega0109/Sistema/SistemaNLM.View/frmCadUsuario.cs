@@ -57,7 +57,30 @@ namespace SistemaNLM.View
                     break;
 
                 case "Excluir":
+                    LimparCampos();
+                    HabilitarCampos();
 
+                    try
+                    {
+                        objTabela.Id = Convert.ToInt32(tbCodigo.Text);
+
+                        int x = ctlUsuario.Excluir(objTabela);
+
+                        if (x > 0)
+                        {
+                            // MessageBox.Show("Usuário inserido com sucesso!");
+                            MessageBox.Show(String.Format("Usuário: {0} foi excluído com sucesso!", tbNome.Text));
+                        }
+                        else
+                        {
+                            MessageBox.Show("Usuário não excluído!");
+                        }
+                    }
+                    catch (Exception erro)
+                    {
+                        MessageBox.Show("Ocorreu um erro ao Excluir: " + erro.Message);
+                        throw erro;
+                    }
                     break;
 
                 case "Editar":
@@ -88,33 +111,6 @@ namespace SistemaNLM.View
 
             tbNome.Focus();
         }
-
-        private void btNovo_Click(object sender, EventArgs e)
-        {
-            opc = "Novo";
-            iniciarOpc();
-        }
-
-        private void btSalvar_Click(object sender, EventArgs e)
-        {
-            opc = "Salvar";
-            iniciarOpc();
-            LimparCampos();
-            DesabilitarCampos();
-        }
-
-        private void btExcluir_Click(object sender, EventArgs e)
-        {
-            opc = "Excluir";
-            iniciarOpc();
-        }
-
-        private void btEditar_Click(object sender, EventArgs e)
-        {
-            opc = "Editar";
-            iniciarOpc();
-        }
-
         private void ListaGrid()
         {
             try
@@ -129,8 +125,72 @@ namespace SistemaNLM.View
             catch (Exception erro)
             {
 
-                MessageBox.Show("Erro ao lista dados: " + erro.Message);;
+                MessageBox.Show("Erro ao lista dados: " + erro.Message); ;
             }
+        }
+
+        private void btNovo_Click(object sender, EventArgs e)
+        {
+            opc = "Novo";
+            iniciarOpc();
+        }
+
+        private void btSalvar_Click(object sender, EventArgs e)
+        {
+            opc = "Salvar";
+            iniciarOpc();
+            ListaGrid();
+            LimparCampos();
+            DesabilitarCampos();
+        }
+
+        private void btExcluir_Click(object sender, EventArgs e)
+        {
+            opc = "Excluir";
+            iniciarOpc();
+            ListaGrid();
+        }
+
+        private void btEditar_Click(object sender, EventArgs e)
+        {
+            opc = "Editar";
+            iniciarOpc();
+            ListaGrid();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbSenha_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbNome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

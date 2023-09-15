@@ -7,6 +7,11 @@ namespace SistemaNLM.Controller
 {
     public class ctlUsuario
     {
+        public static int Excluir(tblUsuario objTabela)
+        {
+            return new modUsuario().Excluir(objTabela);
+        }
+
         public static int Inserir(tblUsuario objTabela)
         {
             return new modUsuario().Inserir(objTabela);
