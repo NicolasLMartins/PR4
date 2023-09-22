@@ -28,6 +28,8 @@ namespace SistemaNLM.View
                 case "Novo":
                     LimparCampos();
                     HabilitarCampos();
+
+                    tbNome.Focus();
                     break;
 
                 case "Salvar":
@@ -57,9 +59,6 @@ namespace SistemaNLM.View
                     break;
 
                 case "Excluir":
-                    LimparCampos();
-                    HabilitarCampos();
-
                     try
                     {
                         objTabela.Id = Convert.ToInt32(tbCodigo.Text);
@@ -69,7 +68,7 @@ namespace SistemaNLM.View
                         if (x > 0)
                         {
                             // MessageBox.Show("Usuário inserido com sucesso!");
-                            MessageBox.Show(String.Format("Usuário: {0} foi excluído com sucesso!", tbNome.Text));
+                            MessageBox.Show(String.Format("Usuário {0} excluído com sucesso!", tbNome.Text));
                         }
                         else
                         {
@@ -79,12 +78,33 @@ namespace SistemaNLM.View
                     catch (Exception erro)
                     {
                         MessageBox.Show("Ocorreu um erro ao Excluir: " + erro.Message);
-                        throw erro;
                     }
                     break;
 
                 case "Editar":
+                    try
+                    {
+                        objTabela.Id = Convert.ToInt32(tbCodigo.Text);
+                        objTabela.Nome = tbNome.Text;
+                        objTabela.Usuario = tbUsuario.Text;
+                        objTabela.Senha = tbSenha.Text;
 
+                        int x = ctlUsuario.Editar(objTabela);
+
+                        if (x > 0)
+                        {
+                            // MessageBox.Show("Usuário inserido com sucesso!");
+                            MessageBox.Show(String.Format("Dado(s) do usuário {0} editado(s) com sucesso!", tbNome.Text));
+                        }
+                        else
+                        {
+                            MessageBox.Show("Usuário não editado!");
+                        }
+                    }
+                    catch (Exception erro)
+                    {
+                        MessageBox.Show("Ocorreu um erro ao Editar: " + erro.Message);
+                    }
                     break;
             }
         }
@@ -105,12 +125,12 @@ namespace SistemaNLM.View
 
         private void LimparCampos()
         {
+            tbCodigo.Clear();
             tbNome.Clear(); // tbNome.Text = "";
             tbUsuario.Clear(); // tbUsuario.Text = "";
             tbSenha.Clear(); // tbSenha.Text = "";
-
-            tbNome.Focus();
         }
+
         private void ListaGrid()
         {
             try
@@ -124,8 +144,7 @@ namespace SistemaNLM.View
             }
             catch (Exception erro)
             {
-
-                MessageBox.Show("Erro ao lista dados: " + erro.Message); ;
+                MessageBox.Show("Erro ao listar dados: " + erro.Message); ;
             }
         }
 
@@ -146,19 +165,47 @@ namespace SistemaNLM.View
 
         private void btExcluir_Click(object sender, EventArgs e)
         {
+            if (tbCodigo.Text == "")
+            {
+                MessageBox.Show("Selecione um registro da tabela para excluir!");
+                return;
+            }
+
             opc = "Excluir";
             iniciarOpc();
             ListaGrid();
+            LimparCampos();
+            DesabilitarCampos();
         }
 
         private void btEditar_Click(object sender, EventArgs e)
         {
+            if (tbCodigo.Text == "")
+            {
+                MessageBox.Show("Selecione um registro da tabela para editar!");
+                return;
+            }
+
             opc = "Editar";
             iniciarOpc();
             ListaGrid();
         }
 
+        private void dgvLerDados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            tbCodigo.Text = dgvLerDados.CurrentRow.Cells[0].Value.ToString();
+            tbNome.Text = dgvLerDados.CurrentRow.Cells[1].Value.ToString();
+            tbUsuario.Text = dgvLerDados.CurrentRow.Cells[2].Value.ToString();
+            tbSenha.Text = dgvLerDados.CurrentRow.Cells[3].Value.ToString();
+            HabilitarCampos();
+        }
+
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbCodigo_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -178,17 +225,22 @@ namespace SistemaNLM.View
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
