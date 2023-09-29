@@ -169,5 +169,48 @@ namespace SistemaNLM.Model
                 return objTabela;
             }
         }
+
+        public List<tblUsuario> Pesquisar(tblUsuario objTabela)
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+                con.ConnectionString = Properties.Settings.Default.Banco;
+
+                SqlCommand sql = new SqlCommand();
+
+                sql.CommandType = CommandType.Text;
+
+                con.Open();
+
+                sql.CommandText = "SELECT * FROM tblUsuario WHERE nome LIKE @Nome";
+
+                sql.Parameters.Add("Nome", SqlDbType.VarChar).Value = objTabela.Nome + "%";
+
+                sql.Connection = con;
+
+                SqlDataReader dr;
+
+                List<tblUsuario> lista = new List<tblUsuario>();
+
+                dr = sql.ExecuteReader();
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        tblUsuario dado = new tblUsuario();
+
+                        dado.Id = Convert.ToInt32(dr["id"]);
+                        dado.Nome = Convert.ToString(dr["nome"]);
+                        dado.Usuario = Convert.ToString(dr["usuario"]);
+                        dado.Senha = Convert.ToString(dr["senha"]);
+
+                        lista.Add(dado);
+                    }
+                }
+
+                return lista;
+            }
+        }
     }
 }

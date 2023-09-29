@@ -31,5 +31,10 @@ namespace SistemaNLM.Controller
         {
             return new modUsuario().Login(objTabela);
         }
+
+        public List<tblUsuario> Pesquisar(tblUsuario objTabela)
+        {
+            return new modUsuario().Pesquisar(objTabela);
+        }
     }
 }

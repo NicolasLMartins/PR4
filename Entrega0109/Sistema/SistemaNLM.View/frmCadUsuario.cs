@@ -106,6 +106,27 @@ namespace SistemaNLM.View
                         MessageBox.Show("Ocorreu um erro ao Editar: " + erro.Message);
                     }
                     break;
+
+                case "Pesquisar":
+                    try
+                    {
+                        objTabela.Nome = tbPesquisar.Text;
+
+                        List<tblUsuario> lista = new List<tblUsuario>();
+
+                        lista = new ctlUsuario().Pesquisar(objTabela);
+
+                        dgvLerDados.AutoGenerateColumns = false;
+                        dgvLerDados.DataSource = lista;
+                    }
+                    catch (Exception erro)
+                    {
+                        MessageBox.Show("Ocorreu um erro ao Pesquisar: " + erro.Message);
+                    }
+                    break;
+
+                default:
+                    break;
             }
         }
 
@@ -130,7 +151,7 @@ namespace SistemaNLM.View
             tbUsuario.Clear(); // tbUsuario.Text = "";
             tbSenha.Clear(); // tbSenha.Text = "";
         }
-
+        
         private void ListaGrid()
         {
             try
@@ -200,49 +221,21 @@ namespace SistemaNLM.View
             HabilitarCampos();
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void btPesquisar_Click(object sender, EventArgs e)
         {
-
+            opc = "Pesquisar";
+            iniciarOpc();
         }
 
-        private void tbCodigo_TextChanged(object sender, EventArgs e)
+        private void tbPesquisar_TextChanged(object sender, EventArgs e)
         {
+            opc = "Pesquisar";
+            iniciarOpc();
 
-        }
-
-        private void tbSenha_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbUsuario_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbNome_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            if (tbPesquisar.Text == "")
+            {
+                ListaGrid();
+            }
         }
     }
 }

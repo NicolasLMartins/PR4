@@ -46,7 +46,7 @@
             this.tbCodigo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbPesquisar = new System.Windows.Forms.TextBox();
             this.btPesquisar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLerDados)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +60,6 @@
             this.label1.Size = new System.Drawing.Size(77, 26);
             this.label1.TabIndex = 0;
             this.label1.Text = "&Nome:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -71,7 +70,6 @@
             this.label2.Size = new System.Drawing.Size(93, 26);
             this.label2.TabIndex = 1;
             this.label2.Text = "&Usuário:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -91,7 +89,6 @@
             this.tbNome.Name = "tbNome";
             this.tbNome.Size = new System.Drawing.Size(318, 32);
             this.tbNome.TabIndex = 3;
-            this.tbNome.TextChanged += new System.EventHandler(this.tbNome_TextChanged);
             // 
             // tbUsuario
             // 
@@ -101,7 +98,6 @@
             this.tbUsuario.Name = "tbUsuario";
             this.tbUsuario.Size = new System.Drawing.Size(222, 32);
             this.tbUsuario.TabIndex = 4;
-            this.tbUsuario.TextChanged += new System.EventHandler(this.tbUsuario_TextChanged);
             // 
             // tbSenha
             // 
@@ -111,7 +107,6 @@
             this.tbSenha.Name = "tbSenha";
             this.tbSenha.Size = new System.Drawing.Size(222, 32);
             this.tbSenha.TabIndex = 5;
-            this.tbSenha.TextChanged += new System.EventHandler(this.tbSenha_TextChanged);
             // 
             // dgvLerDados
             // 
@@ -209,7 +204,6 @@
             this.tbCodigo.Name = "tbCodigo";
             this.tbCodigo.Size = new System.Drawing.Size(104, 32);
             this.tbCodigo.TabIndex = 11;
-            this.tbCodigo.TextChanged += new System.EventHandler(this.tbCodigo_TextChanged);
             // 
             // label4
             // 
@@ -220,7 +214,6 @@
             this.label4.Size = new System.Drawing.Size(87, 26);
             this.label4.TabIndex = 12;
             this.label4.Text = "&Código:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -231,17 +224,15 @@
             this.label5.Size = new System.Drawing.Size(108, 26);
             this.label5.TabIndex = 14;
             this.label5.Text = "&Pesquisa:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // textBox1
+            // tbPesquisar
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
-            this.textBox1.Location = new System.Drawing.Point(127, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(318, 32);
-            this.textBox1.TabIndex = 13;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.tbPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
+            this.tbPesquisar.Location = new System.Drawing.Point(127, 12);
+            this.tbPesquisar.Name = "tbPesquisar";
+            this.tbPesquisar.Size = new System.Drawing.Size(462, 32);
+            this.tbPesquisar.TabIndex = 13;
+            this.tbPesquisar.TextChanged += new System.EventHandler(this.tbPesquisar_TextChanged);
             // 
             // btPesquisar
             // 
@@ -252,6 +243,8 @@
             this.btPesquisar.TabIndex = 15;
             this.btPesquisar.Text = "&Pesquisar";
             this.btPesquisar.UseVisualStyleBackColor = true;
+            this.btPesquisar.Visible = false;
+            this.btPesquisar.Click += new System.EventHandler(this.btPesquisar_Click);
             // 
             // frmCadUsuario
             // 
@@ -260,7 +253,7 @@
             this.ClientSize = new System.Drawing.Size(603, 520);
             this.Controls.Add(this.btPesquisar);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbPesquisar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbCodigo);
             this.Controls.Add(this.btEditar);
@@ -304,7 +297,7 @@
         private System.Windows.Forms.TextBox tbCodigo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbPesquisar;
         private System.Windows.Forms.Button btPesquisar;
     }
 }
