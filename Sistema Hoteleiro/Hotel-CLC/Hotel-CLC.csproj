@@ -52,10 +52,19 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -94,6 +103,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LOGIN %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fundo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LOGIN %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LOGIN %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LOGIN %285%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group 1 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\botao.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\botao2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\botao %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\botao2 %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
