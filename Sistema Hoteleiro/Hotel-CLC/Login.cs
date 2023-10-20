@@ -71,5 +71,10 @@ namespace Hotel_CLC
                 btLogin_Click(sender, e);
             }
         }
+
+        private void frLogin_Resize(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized; 
+        }
     }
 }

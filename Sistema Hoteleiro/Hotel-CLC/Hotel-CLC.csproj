@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cadastros\frFuncionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastros\frFuncionarios.Designer.cs">
+      <DependentUpon>frFuncionarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Cadastros\frFuncionarios.resx">
+      <DependentUpon>frFuncionarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +139,57 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\botao2 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cadastro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkIn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\movimentacoes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\produtos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\relatorio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reservas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sair.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\produto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\produto64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\movimentacao.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reservas64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quadroDeReservas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkin64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkout64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\relatorio64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\relogio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuario.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -16,5 +16,25 @@ namespace Hotel_CLC
         {
             InitializeComponent();
         }
+
+        private void frMenuPrincipal_Resize(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btSair_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void MenuSair_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
