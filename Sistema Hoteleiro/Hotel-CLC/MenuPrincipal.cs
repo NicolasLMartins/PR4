@@ -36,5 +36,16 @@ namespace Hotel_CLC
         {
             Close();
         }
+
+        private void funcionariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cadastros.frFuncionarios frFunc = new Cadastros.frFuncionarios();
+            frFunc.ShowDialog();
+        }
+
+        private void frMenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

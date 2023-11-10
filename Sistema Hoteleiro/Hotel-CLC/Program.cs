@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel_CLC.Cadastros;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +18,8 @@ namespace Hotel_CLC
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frLogin());
-            Application.Run(new frMenuPrincipal());
+            //Application.Run(new frMenuPrincipal());
+            Application.Run(new frFuncionarios());
         }
     }
 }

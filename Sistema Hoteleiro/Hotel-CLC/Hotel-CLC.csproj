@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cadastros\frCargos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastros\frCargos.Designer.cs">
+      <DependentUpon>frCargos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cadastros\frFuncionarios.cs">
       <SubType>Form</SubType>
     </Compile>
