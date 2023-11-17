@@ -1,71 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Hotel_CLC.Cadastros
 {
-    public partial class frFuncionarios : Form
+    public partial class frProdutos : Form
     {
-        public frFuncionarios()
+        public frProdutos()
         {
             InitializeComponent();
-        }
-
-        private void frFuncionarios_Load(object sender, EventArgs e)
-        {
-            rbNome.Checked = true;
         }
 
         private void HabilitarCampos()
         {
             tbNome.Enabled = true;
-            mtbCPF.Enabled = true;
-            tbEndereco.Enabled = true;
-            mtbTelefone.Enabled = true;
-            cbCargo.Enabled = true;
+            tbDescricao.Enabled = true;
+            tbValor.Enabled = true;
+            cbFornecedor.Enabled = true;
+            tbEstoque.Enabled = true;
+
+            tbNome.Focus();
+            btAdicionarImg.Enabled = true;
         }
         private void DesabilitarCampos()
         {
             tbNome.Enabled = false;
-            mtbCPF.Enabled = false;
-            tbEndereco.Enabled = false;
-            mtbTelefone.Enabled = false;
-            cbCargo.Enabled = false;
+            tbDescricao.Enabled = false;
+            tbValor.Enabled = false;
+            cbFornecedor.Enabled = false;
+            tbEstoque.Enabled = false;
+            btAdicionarImg.Enabled = false;
         }
 
         private void LimparCampos()
         {
             tbNome.Clear();
-            mtbCPF.Clear();
-            tbEndereco.Clear();
-            mtbTelefone.Clear();
-            cbCargo.ResetText();
+            tbDescricao.Clear();
+            tbValor.Clear();
+            tbEstoque.Clear();
+            LimparImagem();
         }
 
-        private void rbNome_CheckedChanged(object sender, EventArgs e)
+        private void LimparImagem()
         {
-            tbBuscarNome.Visible = true;
-            mtbBuscarCPF.Visible = false;
-
-            mtbBuscarCPF.Clear();
-            tbBuscarNome.Clear();
-            tbBuscarNome.Focus();
-        }
-
-        private void rbCPF_CheckedChanged(object sender, EventArgs e)
-        {
-            tbBuscarNome.Visible = false;
-            mtbBuscarCPF.Visible = true;
-
-            tbBuscarNome.Clear();
-            mtbBuscarCPF.Clear();
-            mtbBuscarCPF.Focus();
+            pbImagem.Image = Properties.Resources.noimageCrop;
         }
 
         private void btNovo_Click(object sender, EventArgs e)
@@ -83,17 +60,17 @@ namespace Hotel_CLC.Cadastros
 
         private void btSalvar_Click(object sender, EventArgs e)
         {
-            if (tbNome.Text.Trim() == "")
+            if (tbNome.Text.ToString().Trim() == "")
             {
                 MessageBox.Show("Preencha o Nome!", "CAMPO VAZIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tbNome.Focus();
                 return;
             }
-            
-            if (mtbCPF.Text == "   .   .   -")
+
+            if (tbValor.Text == "")
             {
-                MessageBox.Show("Preencha o CPF!", "CAMPO VAZIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                mtbCPF.Focus();
+                MessageBox.Show("Preencha o Valor!", "CAMPO VAZIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tbValor.Focus();
                 return;
             }
 
@@ -107,13 +84,7 @@ namespace Hotel_CLC.Cadastros
 
             LimparCampos();
             DesabilitarCampos();
-        }
-
-        private void dgvLerDados_Click(object sender, EventArgs e)
-        {
-            btEditar.Enabled = true;
-            btExcluir.Enabled = true;
-            btSalvar.Enabled = false;
+            LimparImagem();
         }
 
         private void btEditar_Click(object sender, EventArgs e)
@@ -126,11 +97,10 @@ namespace Hotel_CLC.Cadastros
                 return;
             }
 
-            if (mtbCPF.Text == "   .   .   -")
+            if (tbValor.Text == "")
             {
-                MessageBox.Show("Preencha o CPF!", "CAMPO VAZIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                mtbCPF.Clear();
-                mtbCPF.Focus();
+                MessageBox.Show("Preencha o Valor!", "CAMPO VAZIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tbValor.Focus();
                 return;
             }
 
@@ -144,6 +114,7 @@ namespace Hotel_CLC.Cadastros
 
             LimparCampos();
             DesabilitarCampos();
+            LimparImagem();
         }
 
         private void btExcluir_Click(object sender, EventArgs e)
@@ -162,6 +133,22 @@ namespace Hotel_CLC.Cadastros
 
                 LimparCampos();
                 DesabilitarCampos();
+                LimparImagem();
+            }
+        }
+
+        private void btAdicionarImg_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog imgDialog = new OpenFileDialog();
+
+            imgDialog.Filter = "Arquivos de imagem JPEG(*.jpeg) |*.jpeg|Arquivos PNG(*.png) |*.png|Todos os arquivos (*.*) |*.*";
+
+            if (imgDialog.ShowDialog() == DialogResult.OK)
+            {
+                string foto = imgDialog.FileName.ToString();
+                //MessageBox.Show(foto);
+
+                pbImagem.ImageLocation = foto;
             }
         }
     }

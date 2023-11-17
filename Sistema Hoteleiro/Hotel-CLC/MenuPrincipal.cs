@@ -47,5 +47,17 @@ namespace Hotel_CLC
         {
 
         }
+
+        private void cargosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cadastros.frCargos frCarg = new Cadastros.frCargos();
+            frCarg.ShowDialog();
+        }
+
+        private void novoProdutoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cadastros.frProdutos frProd = new Cadastros.frProdutos();
+            frProd.ShowDialog();
+        }
     }
 }

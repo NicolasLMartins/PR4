@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frFuncionarios));
             this.mtbBuscarCPF = new System.Windows.Forms.MaskedTextBox();
             this.mtbCPF = new System.Windows.Forms.MaskedTextBox();
             this.mtbTelefone = new System.Windows.Forms.MaskedTextBox();
@@ -72,7 +73,7 @@
             // mtbTelefone
             // 
             this.mtbTelefone.Enabled = false;
-            this.mtbTelefone.Location = new System.Drawing.Point(338, 139);
+            this.mtbTelefone.Location = new System.Drawing.Point(338, 138);
             this.mtbTelefone.Mask = "(99) 00000-0000";
             this.mtbTelefone.Name = "mtbTelefone";
             this.mtbTelefone.Size = new System.Drawing.Size(87, 20);
@@ -97,7 +98,7 @@
             // tbEndereco
             // 
             this.tbEndereco.Enabled = false;
-            this.tbEndereco.Location = new System.Drawing.Point(102, 139);
+            this.tbEndereco.Location = new System.Drawing.Point(102, 138);
             this.tbEndereco.Name = "tbEndereco";
             this.tbEndereco.Size = new System.Drawing.Size(230, 20);
             this.tbEndereco.TabIndex = 4;
@@ -132,7 +133,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(99, 124);
+            this.label4.Location = new System.Drawing.Point(99, 123);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 9;
@@ -141,7 +142,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(335, 124);
+            this.label5.Location = new System.Drawing.Point(335, 123);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 13);
             this.label5.TabIndex = 10;
@@ -150,7 +151,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(99, 166);
+            this.label6.Location = new System.Drawing.Point(99, 165);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 11;
@@ -164,7 +165,7 @@
             "Camareira",
             "Garçom",
             "Gerente"});
-            this.cbCargo.Location = new System.Drawing.Point(102, 181);
+            this.cbCargo.Location = new System.Drawing.Point(102, 180);
             this.cbCargo.Name = "cbCargo";
             this.cbCargo.Size = new System.Drawing.Size(121, 21);
             this.cbCargo.TabIndex = 6;
@@ -203,6 +204,7 @@
             this.dgvLerDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLerDados.Size = new System.Drawing.Size(323, 179);
             this.dgvLerDados.TabIndex = 7;
+            this.dgvLerDados.Click += new System.EventHandler(this.dgvLerDados_Click);
             // 
             // btNovo
             // 
@@ -210,7 +212,7 @@
             this.btNovo.Name = "btNovo";
             this.btNovo.Size = new System.Drawing.Size(75, 23);
             this.btNovo.TabIndex = 8;
-            this.btNovo.Text = "button1";
+            this.btNovo.Text = "Novo";
             this.btNovo.UseVisualStyleBackColor = true;
             this.btNovo.Click += new System.EventHandler(this.btNovo_Click);
             // 
@@ -221,8 +223,9 @@
             this.btEditar.Name = "btEditar";
             this.btEditar.Size = new System.Drawing.Size(75, 23);
             this.btEditar.TabIndex = 10;
-            this.btEditar.Text = "button2";
+            this.btEditar.Text = "Editar";
             this.btEditar.UseVisualStyleBackColor = true;
+            this.btEditar.Click += new System.EventHandler(this.btEditar_Click);
             // 
             // btSalvar
             // 
@@ -231,7 +234,7 @@
             this.btSalvar.Name = "btSalvar";
             this.btSalvar.Size = new System.Drawing.Size(75, 23);
             this.btSalvar.TabIndex = 9;
-            this.btSalvar.Text = "button3";
+            this.btSalvar.Text = "Salvar";
             this.btSalvar.UseVisualStyleBackColor = true;
             this.btSalvar.Click += new System.EventHandler(this.btSalvar_Click);
             // 
@@ -242,8 +245,9 @@
             this.btExcluir.Name = "btExcluir";
             this.btExcluir.Size = new System.Drawing.Size(75, 23);
             this.btExcluir.TabIndex = 11;
-            this.btExcluir.Text = "button4";
+            this.btExcluir.Text = "Excluir";
             this.btExcluir.UseVisualStyleBackColor = true;
+            this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
             // 
             // frFuncionarios
             // 
@@ -272,10 +276,11 @@
             this.Controls.Add(this.mtbCPF);
             this.Controls.Add(this.mtbBuscarCPF);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frFuncionarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastro De Funcionários";
+            this.Text = "CADASTRO DE FUNCIONÁRIOS";
             this.Load += new System.EventHandler(this.frFuncionarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLerDados)).EndInit();
             this.ResumeLayout(false);

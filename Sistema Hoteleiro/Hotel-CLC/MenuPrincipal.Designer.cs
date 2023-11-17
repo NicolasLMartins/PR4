@@ -119,32 +119,33 @@
             // funcionariosToolStripMenuItem
             // 
             this.funcionariosToolStripMenuItem.Name = "funcionariosToolStripMenuItem";
-            this.funcionariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.funcionariosToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.funcionariosToolStripMenuItem.Text = "&Funcionários";
             this.funcionariosToolStripMenuItem.Click += new System.EventHandler(this.funcionariosToolStripMenuItem_Click);
             // 
             // hospedesToolStripMenuItem
             // 
             this.hospedesToolStripMenuItem.Name = "hospedesToolStripMenuItem";
-            this.hospedesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hospedesToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.hospedesToolStripMenuItem.Text = "&Hóspedes";
             // 
             // quartosToolStripMenuItem
             // 
             this.quartosToolStripMenuItem.Name = "quartosToolStripMenuItem";
-            this.quartosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quartosToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.quartosToolStripMenuItem.Text = "&Quartos";
             // 
             // cargosToolStripMenuItem
             // 
             this.cargosToolStripMenuItem.Name = "cargosToolStripMenuItem";
-            this.cargosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cargosToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.cargosToolStripMenuItem.Text = "&Cargos";
+            this.cargosToolStripMenuItem.Click += new System.EventHandler(this.cargosToolStripMenuItem_Click);
             // 
             // fornecedoresToolStripMenuItem
             // 
             this.fornecedoresToolStripMenuItem.Name = "fornecedoresToolStripMenuItem";
-            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.fornecedoresToolStripMenuItem.Text = "F&ornecedores";
             // 
             // MenuProdutos
@@ -162,6 +163,7 @@
             this.novoProdutoToolStripMenuItem.Name = "novoProdutoToolStripMenuItem";
             this.novoProdutoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.novoProdutoToolStripMenuItem.Text = "&Novo Produto";
+            this.novoProdutoToolStripMenuItem.Click += new System.EventHandler(this.novoProdutoToolStripMenuItem_Click);
             // 
             // estoqueToolStripMenuItem
             // 
@@ -183,19 +185,19 @@
             // novaVendaToolStripMenuItem
             // 
             this.novaVendaToolStripMenuItem.Name = "novaVendaToolStripMenuItem";
-            this.novaVendaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novaVendaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.novaVendaToolStripMenuItem.Text = "&Nova Venda";
             // 
             // novoServicoToolStripMenuItem
             // 
             this.novoServicoToolStripMenuItem.Name = "novoServicoToolStripMenuItem";
-            this.novoServicoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novoServicoToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.novoServicoToolStripMenuItem.Text = "N&ovo Serviço";
             // 
             // entradasESaidasToolStripMenuItem
             // 
             this.entradasESaidasToolStripMenuItem.Name = "entradasESaidasToolStripMenuItem";
-            this.entradasESaidasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.entradasESaidasToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.entradasESaidasToolStripMenuItem.Text = "&Entradas e Saídas";
             // 
             // MenuCheck
@@ -211,13 +213,13 @@
             // checkinToolStripMenuItem
             // 
             this.checkinToolStripMenuItem.Name = "checkinToolStripMenuItem";
-            this.checkinToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkinToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.checkinToolStripMenuItem.Text = "&Check-in";
             // 
             // checkoutToolStripMenuItem
             // 
             this.checkoutToolStripMenuItem.Name = "checkoutToolStripMenuItem";
-            this.checkoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkoutToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.checkoutToolStripMenuItem.Text = "&Check-out";
             // 
             // MenuReservas
@@ -234,19 +236,19 @@
             // novaReservaToolStripMenuItem
             // 
             this.novaReservaToolStripMenuItem.Name = "novaReservaToolStripMenuItem";
-            this.novaReservaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novaReservaToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.novaReservaToolStripMenuItem.Text = "&Nova Reserva";
             // 
             // quadroDeReservasToolStripMenuItem
             // 
             this.quadroDeReservasToolStripMenuItem.Name = "quadroDeReservasToolStripMenuItem";
-            this.quadroDeReservasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quadroDeReservasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.quadroDeReservasToolStripMenuItem.Text = "&Quadro de Reservas";
             // 
             // consultarReservasToolStripMenuItem
             // 
             this.consultarReservasToolStripMenuItem.Name = "consultarReservasToolStripMenuItem";
-            this.consultarReservasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.consultarReservasToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.consultarReservasToolStripMenuItem.Text = "&Consultar Reservas";
             // 
             // MenuRelatorios

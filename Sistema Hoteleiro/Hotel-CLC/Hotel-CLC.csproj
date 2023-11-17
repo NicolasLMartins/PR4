@@ -58,6 +58,12 @@
     <Compile Include="Cadastros\frFuncionarios.Designer.cs">
       <DependentUpon>frFuncionarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cadastros\frProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastros\frProdutos.Designer.cs">
+      <DependentUpon>frProdutos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,8 +78,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Cadastros\frCargos.resx">
+      <DependentUpon>frCargos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cadastros\frFuncionarios.resx">
       <DependentUpon>frFuncionarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cadastros\frProdutos.resx">
+      <DependentUpon>frProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -196,6 +208,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\noimageCrop.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -33,14 +33,14 @@ namespace Hotel_CLC
         {
             if (tbUsuario.Text == "")
             {
-                MessageBox.Show("Preencha o campo Usuário!");
+                MessageBox.Show("Preencha o campo Usuário!", "CAMPO VAZIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tbUsuario.Focus();
                 return;
             }
 
             if (tbSenha.Text == "")
             {
-                MessageBox.Show("Preencha o campo Senha!");
+                MessageBox.Show("Preencha o campo Senha!", "CAMPO VAZIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tbSenha.Focus();
                 return;
             }
