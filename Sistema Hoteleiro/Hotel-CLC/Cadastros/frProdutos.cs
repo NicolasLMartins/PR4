@@ -151,5 +151,10 @@ namespace Hotel_CLC.Cadastros
                 pbImagem.ImageLocation = foto;
             }
         }
+
+        private void frProdutos_Load(object sender, EventArgs e)
+        {
+            LimparImagem();
+        }
     }
 }

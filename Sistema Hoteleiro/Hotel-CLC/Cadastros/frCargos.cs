@@ -1,13 +1,44 @@
 ﻿using System;
+using System.Data;
+using System.Data.OleDb;
 using System.Windows.Forms;
 
 namespace Hotel_CLC.Cadastros
 {
     public partial class frCargos : Form
     {
+
+        Conexao con = new Conexao();
+        string sql;
+        OleDbCommand cmd;
+
         public frCargos()
         {
             InitializeComponent();
+        }
+
+        private void FormatarDGV()
+        {
+            dgvLerDados.Columns[0].HeaderText = "Código";
+            dgvLerDados.Columns[1].HeaderText = "Cargo";
+
+            dgvLerDados.Columns[0].Visible = false;
+            dgvLerDados.Columns[1].Width = 200;
+        }
+
+        private void Listar()
+        {
+            con.AbrirConexao();
+            sql = "SELECT * FROM tblCargos ORDER BY Cargo ASC";
+            cmd = new OleDbCommand(sql, con.conexao);
+            OleDbDataAdapter daLista = new OleDbDataAdapter();
+            daLista.SelectCommand = cmd;
+            DataTable dtLista = new DataTable();
+            daLista.Fill(dtLista);
+            dgvLerDados.DataSource = dtLista;
+            con.FecharConexao();
+
+            FormatarDGV();
         }
 
         private void desabilitarCampos()
@@ -37,26 +68,28 @@ namespace Hotel_CLC.Cadastros
             {
                 MessageBox.Show("Preencha o Cargo!", "CAMPO VAZIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 limparCampos();
+                Listar();
                 tbCargo.Focus();
                 return;
             }
 
             // CÓDIGO DO BOTÃO PARA SALVAR
+            con.AbrirConexao();
+            sql = $"INSERT INTO tblCargos (Cargo) VALUES('{tbCargo.Text}')";
+            cmd = new OleDbCommand(sql, con.conexao);
+            cmd.ExecuteNonQuery();
+            con.FecharConexao();
 
-            MessageBox.Show("Registro salvo com sucesso!", "REGISTRO EDITADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Registro salvo com sucesso!", "REGISTRO SALVO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btNovo.Enabled = true;
             btSalvar.Enabled = false;
 
             limparCampos();
             desabilitarCampos();
+            Listar();
         }
 
         private void dgvLerDados_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dgvLerDados_Click(object sender, EventArgs e)
         {
             btEditar.Enabled = true;
             btExcluir.Enabled = true;
@@ -102,6 +135,11 @@ namespace Hotel_CLC.Cadastros
                 limparCampos();
                 desabilitarCampos();
             }
+        }
+
+        private void frCargos_Load(object sender, EventArgs e)
+        {
+            Listar();
         }
     }
 }

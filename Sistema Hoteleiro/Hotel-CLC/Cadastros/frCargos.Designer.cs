@@ -49,10 +49,10 @@
             this.dgvLerDados.Size = new System.Drawing.Size(323, 179);
             this.dgvLerDados.TabIndex = 0;
             this.dgvLerDados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLerDados_CellContentClick);
-            this.dgvLerDados.Click += new System.EventHandler(this.dgvLerDados_Click);
             // 
             // tbCargo
             // 
+            this.tbCargo.Enabled = false;
             this.tbCargo.Location = new System.Drawing.Point(221, 17);
             this.tbCargo.Name = "tbCargo";
             this.tbCargo.Size = new System.Drawing.Size(162, 20);
@@ -129,6 +129,7 @@
             this.Name = "frCargos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CADASTRO DE CARGOS";
+            this.Load += new System.EventHandler(this.frCargos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLerDados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -64,6 +64,7 @@
     <Compile Include="Cadastros\frProdutos.Designer.cs">
       <DependentUpon>frProdutos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Conexao.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>

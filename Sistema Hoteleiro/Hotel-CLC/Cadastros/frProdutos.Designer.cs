@@ -265,6 +265,7 @@
             this.Name = "frProdutos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CADASTRO DE PRODUTOS";
+            this.Load += new System.EventHandler(this.frProdutos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLerDados)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagem)).EndInit();
             this.ResumeLayout(false);
