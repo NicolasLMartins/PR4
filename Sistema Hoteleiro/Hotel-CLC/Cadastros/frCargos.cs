@@ -11,6 +11,7 @@ namespace Hotel_CLC.Cadastros
         Conexao con = new Conexao();
         string sql;
         OleDbCommand cmd;
+        string id;
 
         public frCargos()
         {
@@ -89,13 +90,6 @@ namespace Hotel_CLC.Cadastros
             Listar();
         }
 
-        private void dgvLerDados_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btEditar.Enabled = true;
-            btExcluir.Enabled = true;
-            btSalvar.Enabled = false;
-        }
-
         private void btEditar_Click(object sender, EventArgs e)
         {
             if (tbCargo.Text.ToString().Trim() == "")
@@ -108,6 +102,12 @@ namespace Hotel_CLC.Cadastros
 
             // CÓDIGO DO BOTÃO PARA EDITAR
 
+            con.AbrirConexao();
+            sql = "UPDATE tblCargos SET cargo = '" + tbCargo.Text + "' WHERE idCargo = " + id;
+            cmd = new OleDbCommand(sql, con.conexao);
+            cmd.ExecuteNonQuery();
+            con.FecharConexao();
+
             MessageBox.Show("Registro editado com sucesso!", "REGISTRO EDITADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             btNovo.Enabled = true;
@@ -116,6 +116,7 @@ namespace Hotel_CLC.Cadastros
 
             limparCampos();
             desabilitarCampos();
+            Listar();
         }
 
         private void btExcluir_Click(object sender, EventArgs e)
@@ -140,6 +141,18 @@ namespace Hotel_CLC.Cadastros
         private void frCargos_Load(object sender, EventArgs e)
         {
             Listar();
+        }
+
+        private void dgvLerDados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btEditar.Enabled = true;
+            btExcluir.Enabled = true;
+            btSalvar.Enabled = false;
+            tbCargo.Enabled = true;
+
+            id = dgvLerDados.CurrentRow.Cells[0].Value.ToString();
+            //MessageBox.Show(id);
+            tbCargo.Text = dgvLerDados.CurrentRow.Cells[1].Value.ToString();
         }
     }
 }

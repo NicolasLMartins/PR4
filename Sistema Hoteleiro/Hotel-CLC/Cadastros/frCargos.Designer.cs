@@ -48,7 +48,7 @@
             this.dgvLerDados.Name = "dgvLerDados";
             this.dgvLerDados.Size = new System.Drawing.Size(323, 179);
             this.dgvLerDados.TabIndex = 0;
-            this.dgvLerDados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLerDados_CellContentClick);
+            this.dgvLerDados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLerDados_CellClick);
             // 
             // tbCargo
             // 

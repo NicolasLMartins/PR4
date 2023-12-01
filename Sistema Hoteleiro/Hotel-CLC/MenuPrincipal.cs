@@ -59,5 +59,15 @@ namespace Hotel_CLC
             Cadastros.frProdutos frProd = new Cadastros.frProdutos();
             frProd.ShowDialog();
         }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
