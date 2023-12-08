@@ -10,7 +10,7 @@ namespace Hotel_CLC
     internal class Conexao
     {
         string conectarUS = (@"Provider = SQLOLEDB;
-                               Data Source = COMP7L3\SQLEXPRESS;
+                               Data Source = 01LAB03\SQLEXPRESS;
                                Initial Catalog = Hotel-CLC;
                                User ID = sa;
                                Password = sa;");

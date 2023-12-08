@@ -17,7 +17,7 @@ namespace Hotel_CLC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frCargos());
+            Application.Run(new frUsuarios());
         }
     }
 }

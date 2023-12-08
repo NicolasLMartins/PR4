@@ -54,12 +54,13 @@
             // 
             // mtbBuscarCPF
             // 
-            this.mtbBuscarCPF.Location = new System.Drawing.Point(338, 35);
+            this.mtbBuscarCPF.Location = new System.Drawing.Point(338, 10);
             this.mtbBuscarCPF.Mask = "000,000,000-00";
             this.mtbBuscarCPF.Name = "mtbBuscarCPF";
             this.mtbBuscarCPF.Size = new System.Drawing.Size(87, 20);
             this.mtbBuscarCPF.TabIndex = 1;
             this.mtbBuscarCPF.Visible = false;
+            this.mtbBuscarCPF.TextChanged += new System.EventHandler(this.mtbBuscarCPF_TextChanged);
             // 
             // mtbCPF
             // 
@@ -81,11 +82,12 @@
             // 
             // tbBuscarNome
             // 
-            this.tbBuscarNome.Location = new System.Drawing.Point(338, 9);
+            this.tbBuscarNome.Location = new System.Drawing.Point(338, 36);
             this.tbBuscarNome.Name = "tbBuscarNome";
             this.tbBuscarNome.Size = new System.Drawing.Size(87, 20);
             this.tbBuscarNome.TabIndex = 0;
             this.tbBuscarNome.Visible = false;
+            this.tbBuscarNome.TextChanged += new System.EventHandler(this.tbBuscarNome_TextChanged);
             // 
             // tbNome
             // 
@@ -196,15 +198,18 @@
             // 
             // dgvLerDados
             // 
+            this.dgvLerDados.AllowUserToAddRows = false;
+            this.dgvLerDados.AllowUserToDeleteRows = false;
             this.dgvLerDados.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvLerDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLerDados.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvLerDados.Location = new System.Drawing.Point(102, 226);
             this.dgvLerDados.Name = "dgvLerDados";
+            this.dgvLerDados.ReadOnly = true;
             this.dgvLerDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLerDados.Size = new System.Drawing.Size(323, 179);
             this.dgvLerDados.TabIndex = 7;
-            this.dgvLerDados.Click += new System.EventHandler(this.dgvLerDados_Click);
+            this.dgvLerDados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLerDados_CellClick);
             // 
             // btNovo
             // 

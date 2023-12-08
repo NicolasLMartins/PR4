@@ -126,16 +126,16 @@ namespace Hotel_CLC.Cadastros
             if (resultado == DialogResult.Yes)
             {
                 // CÓDIGO DO BOTÃO PARA EXCLUIR
-                con.AbrirCon();
+                con.AbrirConexao();
                 sql = "DELETE FROM tblCargos WHERE idCargo = " + id;
-                cmd = new OleDbCommand(sql, con.conec);
+                cmd = new OleDbCommand(sql, con.conexao);
                 cmd.ExecuteNonQuery();
-                con.FecharCon();
+                con.FecharConexao();
 
                 MessageBox.Show("Registro excluído com sucesso!", "EXCLUIR REGISTRO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 btNovo.Enabled = true;
-                btSalvar.Enabled = false;
+                btEditar.Enabled = false;
                 btExcluir.Enabled = false;
 
                 limparCampos();

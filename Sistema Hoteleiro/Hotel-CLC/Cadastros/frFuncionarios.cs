@@ -23,22 +23,51 @@ namespace Hotel_CLC.Cadastros
             InitializeComponent();
         }
 
+        private void FormatarDGV()
+        {
+            dgvLerDados.Columns[0].HeaderText = "Código";
+            dgvLerDados.Columns[1].HeaderText = "Nome";
+            dgvLerDados.Columns[2].HeaderText = "CPF";
+            dgvLerDados.Columns[3].HeaderText = "Endereço";
+            dgvLerDados.Columns[4].HeaderText = "Telefone";
+            dgvLerDados.Columns[5].HeaderText = "Cargo";
+            dgvLerDados.Columns[6].HeaderText = "Data";
+
+            dgvLerDados.Columns[0].Visible = false;
+        }
+
+        private void Listar()
+        {
+            con.AbrirConexao();
+            sql = "SELECT * FROM tblFuncionarios ORDER BY nome ASC";
+            cmd = new OleDbCommand(sql, con.conexao);
+            OleDbDataAdapter daLista = new OleDbDataAdapter();
+            daLista.SelectCommand = cmd;
+            DataTable dtLista = new DataTable();
+            daLista.Fill(dtLista);
+            dgvLerDados.DataSource = dtLista;
+            con.FecharConexao();
+
+            FormatarDGV();
+        }
+
         private void CarregarComboBox()
         {
-            con.AbrirCon();
+            con.AbrirConexao();
             sql = "SELECT * FROM tblCargos order by cargo asc";
-            cmd = new OleDbCommand(sql, con.conec);
+            cmd = new OleDbCommand(sql, con.conexao);
             OleDbDataAdapter daLista = new OleDbDataAdapter();
             daLista.SelectCommand = cmd;
             DataTable dtLista = new DataTable();
             daLista.Fill(dtLista);
             cbCargo.DataSource = dtLista;
             cbCargo.DisplayMember = "Cargo";
-            con.FecharCon();
+            con.FecharConexao();
         }
 
         private void frFuncionarios_Load(object sender, EventArgs e)
         {
+            Listar();
             rbNome.Checked = true;
             CarregarComboBox();
         }
@@ -91,6 +120,12 @@ namespace Hotel_CLC.Cadastros
 
         private void btNovo_Click(object sender, EventArgs e)
         {
+            if (cbCargo.Text == "")
+            {
+                MessageBox.Show("Cadastre antes um cargo!");
+                Close();
+            }
+
             HabilitarCampos();
 
             btSalvar.Enabled = true;
@@ -104,7 +139,7 @@ namespace Hotel_CLC.Cadastros
 
         private void btSalvar_Click(object sender, EventArgs e)
         {
-            if (tbNome.Text.Trim() == "")
+            if (tbNome.Text.ToString().Trim() == "")
             {
                 MessageBox.Show("Preencha o Nome!", "CAMPO VAZIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tbNome.Focus();
@@ -119,6 +154,11 @@ namespace Hotel_CLC.Cadastros
             }
 
             //CÓDIGO DO BOTÃO PARA SALVAR
+            con.AbrirConexao();
+            sql = $"INSERT INTO tblFuncionarios VALUES('{tbNome.Text}', '{mtbCPF.Text}', '{tbEndereco.Text}', '{mtbTelefone.Text}', '{cbCargo.Text}', '{DateTime.Now}')";
+            cmd = new OleDbCommand(sql, con.conexao);
+            cmd.ExecuteNonQuery();
+            con.FecharConexao();
 
             MessageBox.Show("Registro salvo com sucesso!", "REGISTRO SALVO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -128,13 +168,7 @@ namespace Hotel_CLC.Cadastros
 
             LimparCampos();
             DesabilitarCampos();
-        }
-
-        private void dgvLerDados_Click(object sender, EventArgs e)
-        {
-            btEditar.Enabled = true;
-            btExcluir.Enabled = true;
-            btSalvar.Enabled = false;
+            Listar();
         }
 
         private void btEditar_Click(object sender, EventArgs e)
@@ -156,6 +190,11 @@ namespace Hotel_CLC.Cadastros
             }
 
             // CÓDIGO DO BOTÃO PARA EDITAR
+            con.AbrirConexao();
+            sql = $"UPDATE tblFuncionarios SET nome = '{tbNome.Text}', cpf = '{mtbCPF.Text}', endereco = '{tbEndereco.Text}', telefone = '{mtbTelefone.Text}', cargo = '{cbCargo.Text}' WHERE idFunc = {id}";
+            cmd = new OleDbCommand(sql, con.conexao);
+            cmd.ExecuteNonQuery();
+            con.FecharConexao();
 
             MessageBox.Show("Registro editado com sucesso!", "REGISTRO EDITADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -165,6 +204,7 @@ namespace Hotel_CLC.Cadastros
 
             LimparCampos();
             DesabilitarCampos();
+            Listar();
         }
 
         private void btExcluir_Click(object sender, EventArgs e)
@@ -174,6 +214,11 @@ namespace Hotel_CLC.Cadastros
             if (resultado == DialogResult.Yes)
             {
                 // CÓDIGO DO BOTÃO PARA EXCLUIR
+                con.AbrirConexao();
+                sql = $"DELETE FROM tblFuncionarios WHERE idFunc = {id}";
+                cmd = new OleDbCommand(sql, con.conexao);
+                cmd.ExecuteNonQuery();
+                con.FecharConexao();
 
                 MessageBox.Show("Registro excluído com sucesso!", "REGISTRO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -183,6 +228,69 @@ namespace Hotel_CLC.Cadastros
 
                 LimparCampos();
                 DesabilitarCampos();
+                Listar();
+            }
+        }
+
+        private void BuscarPorNome()
+        {
+            con.AbrirConexao();
+            sql = $"SELECT * FROM tblFuncionarios WHERE nome LIKE '{tbBuscarNome.Text}%' ORDER BY nome ASC";
+            cmd = new OleDbCommand(sql, con.conexao);
+            OleDbDataAdapter daLista = new OleDbDataAdapter();
+            daLista.SelectCommand = cmd;
+            DataTable dtLista = new DataTable();
+            daLista.Fill(dtLista);
+            dgvLerDados.DataSource = dtLista;
+            con.FecharConexao();
+
+            FormatarDGV();
+        }
+
+         private void BuscarPorCpf()
+        {
+            con.AbrirConexao();
+            sql = $"SELECT * FROM tblFuncionarios WHERE cpf LIKE '{mtbBuscarCPF.Text}' ORDER BY nome ASC";
+            cmd = new OleDbCommand(sql, con.conexao);
+            OleDbDataAdapter daLista = new OleDbDataAdapter();
+            daLista.SelectCommand = cmd;
+            DataTable dtLista = new DataTable();
+            daLista.Fill(dtLista);
+            dgvLerDados.DataSource = dtLista;
+            con.FecharConexao();
+
+            FormatarDGV();
+        }
+
+        private void dgvLerDados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btEditar.Enabled = true;
+            btExcluir.Enabled = true;
+            btSalvar.Enabled = false;
+            HabilitarCampos();
+
+            id = dgvLerDados.CurrentRow.Cells[0].Value.ToString();
+            tbNome.Text = dgvLerDados.CurrentRow.Cells[1].Value.ToString();
+            mtbCPF.Text = dgvLerDados.CurrentRow.Cells[2].Value.ToString();
+            tbEndereco.Text = dgvLerDados.CurrentRow.Cells[3].Value.ToString();
+            mtbTelefone.Text = dgvLerDados.CurrentRow.Cells[4].Value.ToString();
+            cbCargo.Text = dgvLerDados.CurrentRow.Cells[5].Value.ToString();
+        }
+
+        private void tbBuscarNome_TextChanged(object sender, EventArgs e)
+        {
+            BuscarPorNome();
+        }
+
+        private void mtbBuscarCPF_TextChanged(object sender, EventArgs e)
+        {
+            if (mtbBuscarCPF.Text == "   .   .   -")
+            {
+                Listar();
+            }
+            else
+            {
+                BuscarPorCpf();
             }
         }
     }

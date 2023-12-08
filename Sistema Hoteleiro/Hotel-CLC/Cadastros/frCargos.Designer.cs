@@ -41,11 +41,14 @@
             // 
             // dgvLerDados
             // 
+            this.dgvLerDados.AllowUserToAddRows = false;
+            this.dgvLerDados.AllowUserToDeleteRows = false;
             this.dgvLerDados.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvLerDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLerDados.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvLerDados.Location = new System.Drawing.Point(60, 43);
             this.dgvLerDados.Name = "dgvLerDados";
+            this.dgvLerDados.ReadOnly = true;
             this.dgvLerDados.Size = new System.Drawing.Size(323, 179);
             this.dgvLerDados.TabIndex = 0;
             this.dgvLerDados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLerDados_CellClick);

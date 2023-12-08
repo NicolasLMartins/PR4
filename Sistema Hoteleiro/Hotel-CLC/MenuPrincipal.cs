@@ -69,5 +69,11 @@ namespace Hotel_CLC
         {
 
         }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cadastros.frUsuarios fUsu = new Cadastros.frUsuarios();
+            fUsu.ShowDialog();
+        }
     }
 }
