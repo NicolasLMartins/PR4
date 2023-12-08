@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,11 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.OleDb;
 
 namespace Hotel_CLC.Cadastros
 {
     public partial class frFuncionarios : Form
     {
+        Conexao con = new Conexao();
+        string sql;
+        OleDbCommand cmd;
+        string id;
+        
         public frFuncionarios()
         {
             InitializeComponent();
