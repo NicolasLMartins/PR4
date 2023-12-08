@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,9 +23,24 @@ namespace Hotel_CLC.Cadastros
             InitializeComponent();
         }
 
+        private void CarregarComboBox()
+        {
+            con.AbrirCon();
+            sql = "SELECT * FROM tblCargos order by cargo asc";
+            cmd = new OleDbCommand(sql, con.conec);
+            OleDbDataAdapter daLista = new OleDbDataAdapter();
+            daLista.SelectCommand = cmd;
+            DataTable dtLista = new DataTable();
+            daLista.Fill(dtLista);
+            cbCargo.DataSource = dtLista;
+            cbCargo.DisplayMember = "Cargo";
+            con.FecharCon();
+        }
+
         private void frFuncionarios_Load(object sender, EventArgs e)
         {
             rbNome.Checked = true;
+            CarregarComboBox();
         }
 
         private void HabilitarCampos()
