@@ -121,13 +121,18 @@ namespace Hotel_CLC.Cadastros
 
         private void btExcluir_Click(object sender, EventArgs e)
         {
-            var resultado = MessageBox.Show("Deseja realmente excluir o registro?", "REGISTRO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var resultado = MessageBox.Show("Deseja realmente excluir o registro?", "EXCLUIR REGISTRO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (resultado == DialogResult.Yes)
             {
                 // CÓDIGO DO BOTÃO PARA EXCLUIR
+                con.AbrirCon();
+                sql = "DELETE FROM tblCargos WHERE idCargo = " + id;
+                cmd = new OleDbCommand(sql, con.conec);
+                cmd.ExecuteNonQuery();
+                con.FecharCon();
 
-                MessageBox.Show("Registro excluído com sucesso!", "REGISTRO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Registro excluído com sucesso!", "EXCLUIR REGISTRO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 btNovo.Enabled = true;
                 btSalvar.Enabled = false;
@@ -135,6 +140,7 @@ namespace Hotel_CLC.Cadastros
 
                 limparCampos();
                 desabilitarCampos();
+                Listar();
             }
         }
 
