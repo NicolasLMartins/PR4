@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.OleDb;
+using System.Windows.Forms;
 
 namespace Hotel_CLC.Cadastros
 {
@@ -17,6 +11,7 @@ namespace Hotel_CLC.Cadastros
         string sql;
         OleDbCommand cmd;
         string id;
+        string cpfAntigo;
         
         public frFuncionarios()
         {
@@ -95,7 +90,6 @@ namespace Hotel_CLC.Cadastros
             mtbCPF.Clear();
             tbEndereco.Clear();
             mtbTelefone.Clear();
-            cbCargo.ResetText();
         }
 
         private void rbNome_CheckedChanged(object sender, EventArgs e)
@@ -157,14 +151,31 @@ namespace Hotel_CLC.Cadastros
             con.AbrirConexao();
             sql = $"INSERT INTO tblFuncionarios VALUES('{tbNome.Text}', '{mtbCPF.Text}', '{tbEndereco.Text}', '{mtbTelefone.Text}', '{cbCargo.Text}', '{DateTime.Now}')";
             cmd = new OleDbCommand(sql, con.conexao);
+
+            OleDbCommand cmdVerificar;
+            cmdVerificar = new OleDbCommand($"SELECT * FROM tblFuncionarios WHERE cpf = '{mtbCPF.Text}'", con.conexao);
+            OleDbDataAdapter daLista = new OleDbDataAdapter();
+            daLista.SelectCommand = cmdVerificar;
+            DataTable dtLista = new DataTable();
+            daLista.Fill(dtLista);
+
+            if (dtLista.Rows.Count > 0)
+            {
+                MessageBox.Show("CPF já registrado!", "REGISTRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mtbCPF.Clear();
+                mtbCPF.Focus();
+                return;
+            }
+
             cmd.ExecuteNonQuery();
             con.FecharConexao();
 
             MessageBox.Show("Registro salvo com sucesso!", "REGISTRO SALVO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             btNovo.Enabled = true;
-
             btSalvar.Enabled = false;
+            btEditar.Enabled = false;
+            btExcluir.Enabled = false;
 
             LimparCampos();
             DesabilitarCampos();
@@ -173,32 +184,36 @@ namespace Hotel_CLC.Cadastros
 
         private void btEditar_Click(object sender, EventArgs e)
         {
-            if (tbNome.Text.ToString().Trim() == "")
-            {
-                MessageBox.Show("Preencha o Nome!", "CAMPO VAZIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbNome.Clear();
-                tbNome.Focus();
-                return;
-            }
-
-            if (mtbCPF.Text == "   .   .   -")
-            {
-                MessageBox.Show("Preencha o CPF!", "CAMPO VAZIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                mtbCPF.Clear();
-                mtbCPF.Focus();
-                return;
-            }
-
             // CÓDIGO DO BOTÃO PARA EDITAR
             con.AbrirConexao();
             sql = $"UPDATE tblFuncionarios SET nome = '{tbNome.Text}', cpf = '{mtbCPF.Text}', endereco = '{tbEndereco.Text}', telefone = '{mtbTelefone.Text}', cargo = '{cbCargo.Text}' WHERE idFunc = {id}";
             cmd = new OleDbCommand(sql, con.conexao);
+
+            if (mtbCPF.Text != cpfAntigo)
+            {
+                OleDbCommand cmdVerificar;
+                cmdVerificar = new OleDbCommand($"SELECT * FROM tblFuncionarios WHERE cpf = '{mtbCPF.Text}'", con.conexao);
+                OleDbDataAdapter daLista = new OleDbDataAdapter();
+                daLista.SelectCommand = cmdVerificar;
+                DataTable dtLista = new DataTable();
+                daLista.Fill(dtLista);
+
+                if (dtLista.Rows.Count > 0)
+                {
+                    MessageBox.Show("CPF já registrado!", "REGISTRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mtbCPF.Clear();
+                    mtbCPF.Focus();
+                    return;
+                }
+            }
+
             cmd.ExecuteNonQuery();
             con.FecharConexao();
 
             MessageBox.Show("Registro editado com sucesso!", "REGISTRO EDITADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             btNovo.Enabled = true;
+            btSalvar.Enabled = false;
             btEditar.Enabled = false;
             btExcluir.Enabled = false;
 
@@ -224,6 +239,7 @@ namespace Hotel_CLC.Cadastros
 
                 btNovo.Enabled = true;
                 btSalvar.Enabled = false;
+                btEditar.Enabled = false;
                 btExcluir.Enabled = false;
 
                 LimparCampos();
@@ -267,6 +283,7 @@ namespace Hotel_CLC.Cadastros
             btEditar.Enabled = true;
             btExcluir.Enabled = true;
             btSalvar.Enabled = false;
+            btNovo.Enabled = true;
             HabilitarCampos();
 
             id = dgvLerDados.CurrentRow.Cells[0].Value.ToString();
@@ -275,6 +292,8 @@ namespace Hotel_CLC.Cadastros
             tbEndereco.Text = dgvLerDados.CurrentRow.Cells[3].Value.ToString();
             mtbTelefone.Text = dgvLerDados.CurrentRow.Cells[4].Value.ToString();
             cbCargo.Text = dgvLerDados.CurrentRow.Cells[5].Value.ToString();
+
+            cpfAntigo = dgvLerDados.CurrentRow.Cells[2].Value.ToString();
         }
 
         private void tbBuscarNome_TextChanged(object sender, EventArgs e)

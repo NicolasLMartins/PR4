@@ -82,8 +82,11 @@ namespace Hotel_CLC.Cadastros
             con.FecharConexao();
 
             MessageBox.Show("Registro salvo com sucesso!", "REGISTRO SALVO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             btNovo.Enabled = true;
             btSalvar.Enabled = false;
+            btEditar.Enabled = false;
+            btExcluir.Enabled = false;
 
             limparCampos();
             desabilitarCampos();
@@ -111,6 +114,7 @@ namespace Hotel_CLC.Cadastros
             MessageBox.Show("Registro editado com sucesso!", "REGISTRO EDITADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             btNovo.Enabled = true;
+            btSalvar.Enabled = false;
             btEditar.Enabled = false;
             btExcluir.Enabled = false;
 
@@ -135,6 +139,7 @@ namespace Hotel_CLC.Cadastros
                 MessageBox.Show("Registro excluído com sucesso!", "EXCLUIR REGISTRO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 btNovo.Enabled = true;
+                btSalvar.Enabled = false;
                 btEditar.Enabled = false;
                 btExcluir.Enabled = false;
 
@@ -154,6 +159,7 @@ namespace Hotel_CLC.Cadastros
             btEditar.Enabled = true;
             btExcluir.Enabled = true;
             btSalvar.Enabled = false;
+            btNovo.Enabled = true;
             tbCargo.Enabled = true;
 
             id = dgvLerDados.CurrentRow.Cells[0].Value.ToString();

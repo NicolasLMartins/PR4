@@ -9,6 +9,9 @@ namespace Hotel_CLC
 {
     internal static class Program
     {
+        public static string nomeUsuario;
+        public static string cargoUsuario;
+
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
@@ -17,7 +20,7 @@ namespace Hotel_CLC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frUsuarios());
+            Application.Run(new frLogin());
         }
     }
 }

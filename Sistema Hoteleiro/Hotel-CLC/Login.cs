@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.OleDb;
 using System.Windows.Forms;
 
 namespace Hotel_CLC
 {
     public partial class frLogin : Form
     {
+        Conexao con = new Conexao();
+
         public frLogin()
         {
             InitializeComponent();
@@ -44,12 +41,41 @@ namespace Hotel_CLC
                 tbSenha.Focus();
                 return;
             }
-            
+
             //AQUI SERA O CODIGO PARA O LOGIN
-            frMenuPrincipal frMenuPrinc = new frMenuPrincipal();
-            //this.Hide();
-            Limpar();
-            frMenuPrinc.ShowDialog();
+            OleDbCommand cmdVerificar;
+            OleDbDataReader drDados;
+
+            con.AbrirConexao();
+
+            cmdVerificar = new OleDbCommand($"SELECT * FROM tblUsuarios WHERE usuario = '{tbUsuario.Text}' AND senha = '{tbSenha.Text}'", con.conexao);
+
+            drDados = cmdVerificar.ExecuteReader();
+
+            if (drDados.HasRows)
+            {
+                while (drDados.Read())
+                {
+                    Program.nomeUsuario = drDados["nome"].ToString();
+                    Program.cargoUsuario = drDados["cargo"].ToString();
+
+                    MessageBox.Show("con.nomeUsuario");
+                }
+
+                MessageBox.Show($"Bem-Vindo {Program.nomeUsuario}!", "LOGIN EFETUADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frMenuPrincipal frMenuPrinc = new frMenuPrincipal();
+                Limpar();
+                frMenuPrinc.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nome do usuário ou senha incorreto!", "LOGIN NÃO EFETUADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbUsuario.Clear();
+                tbUsuario.Focus();
+                tbSenha.Clear();
+            }
+
+            con.FecharConexao();
         }
 
         private void btLogin_Click(object sender, EventArgs e)

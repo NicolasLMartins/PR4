@@ -52,6 +52,12 @@
     <Compile Include="Cadastros\frCargos.Designer.cs">
       <DependentUpon>frCargos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cadastros\frFornecedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastros\frFornecedores.Designer.cs">
+      <DependentUpon>frFornecedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cadastros\frFuncionarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Cadastros\frCargos.resx">
       <DependentUpon>frCargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cadastros\frFornecedores.resx">
+      <DependentUpon>frFornecedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cadastros\frFuncionarios.resx">
       <DependentUpon>frFuncionarios.cs</DependentUpon>

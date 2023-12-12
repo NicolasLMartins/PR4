@@ -43,7 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbDescricao = new System.Windows.Forms.TextBox();
             this.tbNome = new System.Windows.Forms.TextBox();
-            this.tbBuscarProduto = new System.Windows.Forms.TextBox();
+            this.tbBuscar = new System.Windows.Forms.TextBox();
             this.tbValor = new System.Windows.Forms.TextBox();
             this.tbEstoque = new System.Windows.Forms.TextBox();
             this.btAdicionarImg = new System.Windows.Forms.Button();
@@ -105,6 +105,7 @@
             this.dgvLerDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLerDados.Size = new System.Drawing.Size(479, 179);
             this.dgvLerDados.TabIndex = 23;
+            this.dgvLerDados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLerDados_CellClick);
             // 
             // cbFornecedor
             // 
@@ -189,13 +190,14 @@
             this.tbNome.Size = new System.Drawing.Size(158, 20);
             this.tbNome.TabIndex = 17;
             // 
-            // tbBuscarProduto
+            // tbBuscar
             // 
-            this.tbBuscarProduto.Location = new System.Drawing.Point(244, 8);
-            this.tbBuscarProduto.Name = "tbBuscarProduto";
-            this.tbBuscarProduto.Size = new System.Drawing.Size(240, 20);
-            this.tbBuscarProduto.TabIndex = 15;
-            this.tbBuscarProduto.Visible = false;
+            this.tbBuscar.Location = new System.Drawing.Point(244, 8);
+            this.tbBuscar.Name = "tbBuscar";
+            this.tbBuscar.Size = new System.Drawing.Size(240, 20);
+            this.tbBuscar.TabIndex = 15;
+            this.tbBuscar.Visible = false;
+            this.tbBuscar.TextChanged += new System.EventHandler(this.tbBuscar_TextChanged);
             // 
             // tbValor
             // 
@@ -258,7 +260,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbDescricao);
             this.Controls.Add(this.tbNome);
-            this.Controls.Add(this.tbBuscarProduto);
+            this.Controls.Add(this.tbBuscar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -289,7 +291,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbDescricao;
         private System.Windows.Forms.TextBox tbNome;
-        private System.Windows.Forms.TextBox tbBuscarProduto;
+        private System.Windows.Forms.TextBox tbBuscar;
         private System.Windows.Forms.TextBox tbValor;
         private System.Windows.Forms.TextBox tbEstoque;
         private System.Windows.Forms.PictureBox pbImagem;

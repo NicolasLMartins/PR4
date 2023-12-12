@@ -45,7 +45,8 @@ namespace Hotel_CLC
 
         private void frMenuPrincipal_Load(object sender, EventArgs e)
         {
-
+            lbUsuario.Text = Program.nomeUsuario;
+            lbCargo.Text = Program.cargoUsuario;
         }
 
         private void cargosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,8 +73,14 @@ namespace Hotel_CLC
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Cadastros.frUsuarios fUsu = new Cadastros.frUsuarios();
-            fUsu.ShowDialog();
+            Cadastros.frUsuarios frUsu = new Cadastros.frUsuarios();
+            frUsu.ShowDialog();
+        }
+
+        private void fornecedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cadastros.frFornecedores frFornec = new Cadastros.frFornecedores();
+            frFornec.ShowDialog();
         }
     }
 }
